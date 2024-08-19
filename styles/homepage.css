@@ -4,6 +4,8 @@
     align-items: center;
     flex-direction: column;
 
+    /* background:white; */
+
     width:100%;
 
     min-height:100vh;
@@ -245,7 +247,7 @@
         position:relative;
 
         background:var(--secondary);
-        width:50ch;
+        width:70ch;
         height:30em;
 
         margin:1ch;
@@ -253,6 +255,10 @@
         border-radius:var(--border-radius);
 
         overflow:hidden;
+
+        /* border-style:solid;
+        border-color:var(--secondary);
+        border-width:10px; */
 
         #thumbnail {
             width:100%;
@@ -288,7 +294,10 @@
 
                 padding:0.5em 2ch;
 
-                background:var(--secondary);
+                /* background:var(--secondary); */
+                background:#000a;
+
+                backdrop-filter:blur(5px);
 
                 overflow:hidden;
 
@@ -334,6 +343,10 @@
                         align-items: center;
                     }
 
+                    /* #due {
+                        margin-left:1ch;
+                    } */
+
                     #date {
                         margin-right:1ch;
                     }
@@ -346,7 +359,7 @@
                         }
 
                         &[data-status="completed"] {
-                            color:grey;
+                            color:#fffc;
                         }
 
                         &[data-status="pending"] {

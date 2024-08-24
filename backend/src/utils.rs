@@ -8282,4 +8282,7 @@ pub struct Value(pub f64);
 
 #[derive(FromRow, Debug)]
 pub struct ValueInt(pub i64);
+
+#[derive(FromRow, Debug)]
+pub struct ValueString(pub String);
 // cant believe i have to do this

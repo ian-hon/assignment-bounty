@@ -35,9 +35,10 @@ impl LoginInformation {
                 if bounty_lookup <= 0 {
                     // no matching user ids in the database
                     // insert into db
-                    sqlx::query("insert into user values ($1, $2);")
+                    sqlx::query("insert into user values ($1, $2, $3);")
                         .bind(user_id)
                         .bind(self.username.clone())
+                        .bind(0f64)
                         .execute(db)
                         .await
                         .unwrap();
@@ -70,7 +71,7 @@ impl<'l> FromData<'l> for LoginInformation {
 
         Outcome::Success(LoginInformation {
             username: result.get("username").unwrap().clone(),
-            password: result.get("password").unwrap().clone()
+            password: result.get("password").unwrap().clone(),
         })
     }
 }

@@ -4,9 +4,16 @@ use sqlx::{sqlite::SqliteConnectOptions, SqlitePool};
 mod utils;
 mod cors;
 mod soterius;
-
 mod login_info;
+
 mod user;
+mod tag;
+mod bounty;
+
+#[get("/")]
+pub fn index() -> String {
+    "assignment-bounty backend".to_string()
+}
 
 #[launch]
 async fn rocket() -> _ {
@@ -16,7 +23,13 @@ async fn rocket() -> _ {
         ).await.unwrap())
         .attach(cors::CORS)
 
-        
+        .mount("/", routes![index])
 
-        .mount("/user/test", routes![user::test])
+        .mount("/tag/fetch_all", routes![tag::fetch_all])
+        .mount("/tag/create", routes![tag::create])
+
+        .mount("/bounty/create", routes![bounty::create])
+
+        .mount("/user/fetch_data", routes![user::fetch_user_data])
+        .mount("/user/ensure_existance", routes![user::ensure_existance])
 }

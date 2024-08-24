@@ -1,19 +1,21 @@
-var tagLibrary = [
-    "Vector Maths",
-    "Integration",
-    "Differentiation",
-    "Computer Science",
-    "Chemistry",
-    "IGSCE",
-    "A-Levels",
-    "Software Engineering",
-    "Physics",
-    "Maths",
-    "Advanced Maths",
-    "Additional Maths",
-    "Exponential Differentiation",
-    "Algebra"
-];
+var tagLibrary = [];
+var userData;
+
+sendPostRequest(`${BOUNTY_BACKEND_ADDRESS}/user/ensure_existance`, login_info(), (r) => {
+
+    sendPostRequest(`${BOUNTY_BACKEND_ADDRESS}/user/fetch_data`, login_info(), (r) => {
+        let response = JSON.parse(r);
+        userData = JSON.parse(decodeURIComponent(response['data']));
+
+        document.querySelector("#top-bar #balance").innerHTML = currencyFormatter.format(userData.balance);
+        document.querySelector("#top-bar #username").innerHTML = userData.username;
+    })
+})
+
+// #region Tag
+sendGetRequest(`${BOUNTY_BACKEND_ADDRESS}/tag/fetch_all`, (r) => {
+    tagLibrary = JSON.parse(r);
+})
 
 var selectedTags = [];
 
@@ -78,4 +80,4 @@ function updateSelectedTags() {
 
     document.querySelector("#tag-container #tags").innerHTML = result;
 }
-
+// #

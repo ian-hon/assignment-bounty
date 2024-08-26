@@ -229,7 +229,7 @@
     justify-content: center;
     align-items: end;
 
-    height:100%;
+    height:50%;
     width:100%;
 
     bottom:100%;
@@ -237,7 +237,7 @@
     z-index: 10;
 }
 
-.item > div {
+.item #details #detailChildren {
     display:flex;
     justify-content: space-between;
     align-items: start;
@@ -257,11 +257,11 @@
     overflow:hidden;
 }
 
-.item > div > div {
+.item #details #detailChildren > div {
     text-align: start;
 }
 
-.item > div #title {
+.item #details #detailChildren #title {
     overflow:hidden;
 
     font-size:1.7em;
@@ -270,27 +270,27 @@
     text-overflow:ellipsis;
 }
 
-.item > div #tags {
+.item #details #detailChildren #tags {
     margin: 0.5em 0;
-
-    & .item-tag {
-        display:inline-block;
-
-        font-size:1.2em;
-        padding:0.1em 1ch;
-        margin:0 1ch 0.3em 0;
-
-        background:#0005;
-
-        border-radius:var(--border-radius);
-
-        border-style:solid;
-        border-width:1px;
-        border-color:var(--primary);
-    }
 }
 
-.item > div #footer {
+.item .item-tag {
+    display:inline-block;
+
+    font-size:1.2em;
+    padding:0.1em 1ch;
+    margin:0 1ch 0.3em 0;
+
+    background:#0005;
+
+    border-radius:var(--border-radius);
+
+    border-style:solid;
+    border-width:1px;
+    border-color:var(--primary);
+}
+
+.item #details #detailChildren #footer {
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -300,33 +300,33 @@
     margin-bottom:0.5em;
 }
 
-.item > div #footer h4 {
+.item #details #detailChildren #footer h4 {
     font-size:1.3em;
 }
 
-.item > div #footer > div {
+.item #details #detailChildren #footer > div {
     display:flex;
     justify-content: start;
     align-items: center;
 }
 
-.item > div #footer #date {
+.item #details #detailChildren #footer #date {
     margin-right:1ch;
 }
 
-.item > div #footer #status {
+.item #details #detailChildren #footer #status {
     font-weight:bolder;
 }
 
-.item > div #footer #status[data-status="open"] {
+.item #details #detailChildren #footer #status[data-status="open"] {
     color:limegreen;
 }
 
-.item > div #footer #status[data-status="completed"] {
+.item #details #detailChildren #footer #status[data-status="completed"] {
     color:#fffc;
 }
 
-.item > div #footer #status[data-status="pending"] {
+.item #details #detailChildren #footer #status[data-status="pending"] {
     color:darkgoldenrod;
 }
 /* #endregion */

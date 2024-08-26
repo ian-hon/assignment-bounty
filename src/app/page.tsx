@@ -14,7 +14,6 @@ export default function Home() {
         let a = selectedTags;
         a.push(tag);
         changeSelectedTags(a);
-
         changeTagQuery("");
     }
 
@@ -81,7 +80,7 @@ export default function Home() {
                 <div className="item">
                     <Image id="thumbnail" src="/bounties/bounty1.png" alt="" height={500} width={500} />
                     <div id="details">
-                        <div>
+                        <div id="detailChildren">
                             <div>
                                 <h3 id="title">
                                     Second derivatives

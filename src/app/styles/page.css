@@ -18,25 +18,25 @@
 
     width:calc(100% - 6ch);
     height:var(--topbar-height);
+}
 
-    & div {
+#top-bar div {
         display:flex;
         justify-content: flex-start;
         align-items: center;
+}
 
-        & img {
-            height:2.5em;
-            width:2.5em;
-        }
-    }
+#top-bar div img {
+    height:2.5em;
+    width:2.5em;
+}
 
-    & h4 {
-        margin-right:1ch;
-    }
+#top-bar div h4 {
+    margin-right:1ch;
+}
 
-    & #balance {
-        margin-right:2ch;
-    }
+#top-bar div h4 #balance {
+    margin-right:2ch;
 }
 
 #search-query {

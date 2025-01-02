@@ -5,6 +5,27 @@ import "./styles/globals.css";
 import "./styles/page.css";
 import React from "react";
 
+const currencyFormatter = Intl.NumberFormat(
+    'en-US', {
+        style:'currency',
+        currency:'MYR'
+    }
+);
+
+export class BountyData {
+    title: string;
+    tags: Array<string>;
+    status: string;
+    bounty: number;
+
+    constructor(title: string, tags: Array<string>, status: string, bounty: number) {
+        this.title = title;
+        this.tags = tags;
+        this.status = status;
+        this.bounty = bounty;
+    }
+}
+
 export default function Home() {
     var removeTag = (tag: any) => {
         changeSelectedTags(selectedTags.filter((x) => { return x !== tag }));
@@ -21,6 +42,14 @@ export default function Home() {
     var [selectedTags, changeSelectedTags] = React.useState<Array<String>>([]);
 
     var [tagQuery, changeTagQuery] = React.useState("");
+
+    var [assigmentCollection, changeAssignmentCollection] = React.useState<Array<BountyData>>([
+        new BountyData("assignment one", ["f1", "f2"], "completed", 100),
+        new BountyData("assignment two", ["f1", "f2"], "completed", 100),
+        new BountyData("yet another assignment", ["f1", "f2"], "completed", 100),
+        new BountyData("lorem ipsum", ["f1", "f2"], "completed", 100),
+        new BountyData("lorem ipsum", ["f1", "f2"], "completed", 100),
+    ]);
 
     return (
         <main className="parent">
@@ -77,238 +106,47 @@ export default function Home() {
                 </div>
             </div>
             <div id="collection">
-                <div className="item">
-                    <Image id="thumbnail" src="/bounties/bounty1.png" alt="" height={500} width={500} />
-                    <div id="details">
-                        <div id="detailChildren">
-                            <div>
-                                <h3 id="title">
-                                    Second derivatives
-                                </h3>
-                                <div id="tags">
-                                    <h4 className="item-tag">
-                                        Vector Math
-                                    </h4>
-                                    <h4 className="item-tag">
-                                        Computer Science
-                                    </h4>
+                {
+                    assigmentCollection.map((e) => {
+                        return (
+                            <div className="item">
+                                <Image id="thumbnail" src="/bounties/bounty1.png" alt="" height={500} width={500} />
+                                <div id="details">
+                                    <div id="detailChildren">
+                                        <div>
+                                            <h3 id="title">
+                                                {e.title}
+                                            </h3>
+                                            <div id="tags">
+                                                {
+                                                    e.tags.map((t) => {
+                                                        return (<h4 className="item-tag">
+                                                            {t}
+                                                        </h4>);
+                                                    })
+                                                }
+                                            </div>
+                                        </div>
+                                        <div id="footer">
+                                            <div>
+                                                <h4 id="date">
+                                                    3d ago • 
+                                                </h4>
+                                                <h4 id="status" data-status="completed">
+                                                    {e.status}
+                                                </h4>
+                                            </div>
+                                            <h4 id="bounty">
+                                                {currencyFormatter.format(e.bounty)}
+                                            </h4>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div id="footer">
-                                <div>
-                                    <h4 id="date">
-                                        3d ago • 
-                                    </h4>
-                                    <h4 id="status" data-status="completed">
-                                        completed
-                                    </h4>
-                                </div>
-                                <h4 id="bounty">
-                                    RM5.00
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="item">
-                    <Image id="thumbnail" src="/bounties/bounty1.png" alt="" height={500} width={500} />
-                    <div id="details">
-                        <div>
-                            <div>
-                                <h3 id="title">
-                                    Second derivatives
-                                </h3>
-                                <div id="tags">
-                                    <h4 className="item-tag">
-                                        Vector Math
-                                    </h4>
-                                    <h4 className="item-tag">
-                                        Computer Science
-                                    </h4>
-                                </div>
-                            </div>
-                            <div id="footer">
-                                <div>
-                                    <h4 id="date">
-                                        3d ago • 
-                                    </h4>
-                                    <h4 id="status" data-status="completed">
-                                        completed
-                                    </h4>
-                                </div>
-                                <h4 id="bounty">
-                                    RM5.00
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="item">
-                    <Image id="thumbnail" src="/bounties/bounty1.png" alt="" height={500} width={500} />
-                    <div id="details">
-                        <div>
-                            <div>
-                                <h3 id="title">
-                                    Second derivatives
-                                </h3>
-                                <div id="tags">
-                                    <h4 className="item-tag">
-                                        Vector Math
-                                    </h4>
-                                    <h4 className="item-tag">
-                                        Computer Science
-                                    </h4>
-                                </div>
-                            </div>
-                            <div id="footer">
-                                <div>
-                                    <h4 id="date">
-                                        3d ago • 
-                                    </h4>
-                                    <h4 id="status" data-status="completed">
-                                        completed
-                                    </h4>
-                                </div>
-                                <h4 id="bounty">
-                                    RM5.00
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="item">
-                    <Image id="thumbnail" src="/bounties/bounty1.png" alt="" height={500} width={500} />
-                    <div id="details">
-                        <div>
-                            <div>
-                                <h3 id="title">
-                                    Second derivatives
-                                </h3>
-                                <div id="tags">
-                                    <h4 className="item-tag">
-                                        Vector Math
-                                    </h4>
-                                    <h4 className="item-tag">
-                                        Computer Science
-                                    </h4>
-                                </div>
-                            </div>
-                            <div id="footer">
-                                <div>
-                                    <h4 id="date">
-                                        3d ago • 
-                                    </h4>
-                                    <h4 id="status" data-status="completed">
-                                        completed
-                                    </h4>
-                                </div>
-                                <h4 id="bounty">
-                                    RM5.00
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="item">
-                    <Image id="thumbnail" src="/bounties/bounty1.png" alt="" height={500} width={500} />
-                    <div id="details">
-                        <div>
-                            <div>
-                                <h3 id="title">
-                                    Second derivatives
-                                </h3>
-                                <div id="tags">
-                                    <h4 className="item-tag">
-                                        Vector Math
-                                    </h4>
-                                    <h4 className="item-tag">
-                                        Computer Science
-                                    </h4>
-                                </div>
-                            </div>
-                            <div id="footer">
-                                <div>
-                                    <h4 id="date">
-                                        3d ago • 
-                                    </h4>
-                                    <h4 id="status" data-status="completed">
-                                        completed
-                                    </h4>
-                                </div>
-                                <h4 id="bounty">
-                                    RM5.00
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        );
+                    })
+                }
             </div>
         </main>
     );
-    // return (
-    //     <main className={styles.main}>
-    //         <div className={styles.center}>
-    //             <Image
-    //                 className={styles.logo}
-    //                 src="/next.svg"
-    //                 alt="Next.js Logo"
-    //                 width={180}
-    //                 height={37}
-    //                 priority
-    //             />
-    //         </div>
-
-    //         <div className={styles.grid}>
-    //             <a
-    //                 href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-    //                 className={styles.card}
-    //                 target="_blank"
-    //                 rel="noopener noreferrer"
-    //             >
-    //                 <h2>
-    //                     Docs <span>-&gt;</span>
-    //                 </h2>
-    //                 <p>Find in-depth information about Next.js features and API.</p>
-    //             </a>
-
-    //             <a
-    //                 href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-    //                 className={styles.card}
-    //                 target="_blank"
-    //                 rel="noopener noreferrer"
-    //             >
-    //                 <h2>
-    //                     Learn <span>-&gt;</span>
-    //                 </h2>
-    //                 <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-    //             </a>
-
-    //             <a
-    //                 href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-    //                 className={styles.card}
-    //                 target="_blank"
-    //                 rel="noopener noreferrer"
-    //             >
-    //                 <h2>
-    //                     Templates <span>-&gt;</span>
-    //                 </h2>
-    //                 <p>Explore starter templates for Next.js.</p>
-    //             </a>
-
-    //             <a
-    //                 href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-    //                 className={styles.card}
-    //                 target="_blank"
-    //                 rel="noopener noreferrer"
-    //             >
-    //                 <h2>
-    //                     Deploy <span>-&gt;</span>
-    //                 </h2>
-    //                 <p>
-    //                     Instantly deploy your Next.js site to a shareable URL with Vercel.
-    //                 </p>
-    //             </a>
-    //         </div>
-    //     </main>
-    // );
 }
